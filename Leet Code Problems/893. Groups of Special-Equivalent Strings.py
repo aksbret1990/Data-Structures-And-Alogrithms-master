@@ -13,18 +13,27 @@ class Solution(object):
         """
         
         
-        
-        def count(word):
-            array = [0] * 52
-            for i, letter in enumerate(word):
-                array[ord(letter) - ord('a') +  26 * (i%2)] += 1
-            
-            res.append(tuple(array))
-        
-        res = []
-        for word in A:
-            count(word)
-        return len(set(res))
+        #method 1
+#        def count(word):
+#            array = [0] * 52
+#            for i, letter in enumerate(word):
+#                array[ord(letter) - ord('a') +  26 * (i%2)] += 1
+#            
+#            res.append(tuple(array))
+#        
+#        res = []
+#        for word in A:
+#            count(word)
+#        return len(set(res))
+       
+        #method 2
+        B = set()
+        for string in A:
+            C = list(string)
+            a,b = C[::2], C[1::2]
+            B.add((''.join(sorted(a)), ''.join(sorted(b))))
+			
+        return len(B)
         
         
         
